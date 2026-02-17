@@ -1,0 +1,7 @@
+google-auth
+google-api-python-client
+python-dotenv
+mcp
+tzdata
+google-auth-oauthlib
+google-auth-httplib2
