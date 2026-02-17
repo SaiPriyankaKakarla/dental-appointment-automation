@@ -14,4 +14,4 @@ Key integrations:
 - **Gmail API** (OAuth) for sending patient emails
 - **Safety precautions**: avoids leaking other patient info, staged filtering for duplicates, validates clinic hours and rejects invalid times
 
-**Please refer Workflow Chat for an overview**
+**Please refer Workflow Chat.png for an overview**
