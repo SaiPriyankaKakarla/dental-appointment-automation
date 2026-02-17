@@ -1,38 +1,17 @@
-##Workflow
-User message
-  |
-  +-- Book appointment
-  |     |
-  |     +-- check_availability(date/time)
-  |     |      |
-  |     |      +-- Not available --> suggest_slots(date) --> user picks --> check again
-  |     |      |
-  |     |      +-- Available --> ask details (name, phone, reason, optional email)
-  |     |                      --> confirm summary
-  |     |                      --> create_appointment
-  |     |                      --> patch_event(description)
-  |     |                      --> generate booking code
-  |     |                      --> send confirmation email
-  |     |
-  |     +-- End
-  |
-  +-- Cancel appointment
-  |     |
-  |     +-- find_appointments(date, name)
-  |             |
-  |             +-- No matches --> tell user none found
-  |             +-- Multiple matches --> ask full name --> still multiple --> ask phone
-  |             +-- One match --> confirm cancel --> get_event --> delete_event --> send cancel email
-  |
-  +-- Reschedule appointment
-        |
-        +-- find_appointments(old date, name)
-               |
-               +-- No matches --> tell user none found
-               +-- Multiple matches --> ask full name --> still multiple --> ask phone
-               +-- One match --> check_availability(new time)
-                                |
-                                +-- Not available --> suggest_slots(new date) --> user picks --> check again
-                                +-- Available --> get_event(old) --> delete_event(old)
-                                               --> create_appointment(new) --> patch_event(new)
-                                               --> send reschedule email
+## Project Gist
+
+This project is an AI-powered **dental appointment automation** built with an **MCP server** that connects a chat experience (Claude Desktop / chat UI) to real clinic workflows.
+
+It supports:
+- **Book appointments** (checks availability, collects patient details, confirms, then creates the calendar event)
+- **Suggest available slots** for a selected date
+- **Cancel appointments** with staged confirmation (name → phone if needed)
+- **Reschedule appointments** safely (checks new slot first, then moves the booking)
+- **Email notifications** via Gmail API for confirmations, cancellations, and reschedules
+
+Key integrations:
+- **Google Calendar API** (service account) for scheduling and conflict checks
+- **Gmail API** (OAuth) for sending patient emails
+- **Safety precautions**: avoids leaking other patient info, staged filtering for duplicates, validates clinic hours and rejects invalid times
+
+**Please refer Workflow Chat for an overview**
