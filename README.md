@@ -1,4 +1,4 @@
-## Project Gist
+## Project Overview
 
 This project is an AI-powered **dental appointment automation** built with an **MCP server** that connects a chat experience (Claude Desktop / chat UI) to real clinic workflows.
 
